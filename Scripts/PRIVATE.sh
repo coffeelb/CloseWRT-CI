@@ -6,6 +6,11 @@ UPDATE_PACKAGE "sing-box" \
     "main" \
     "pkg"
 
+UPDATE_PACKAGE "luci-app-wolultra" \
+    "VIKINGYFY/packages" \
+    "main" \
+    "pkg"
+
 UPDATE_PACKAGE "luci-app-cddns" \
     "coffeelb/luci-app-cddns" \
     "main"
