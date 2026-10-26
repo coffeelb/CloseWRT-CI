@@ -1,0 +1,81 @@
+# SPDX-License-Identifier: MIT
+# Copyright (C) 2026 VIKINGYFY
+
+#CI项目
+name: N60PRO
+
+#CI计划
+on:
+  #手动编译
+  workflow_dispatch:
+    inputs:
+      PACKAGE:
+        description: '手动调整插件包，多个请用\n符号隔开。'
+        required: false
+        type: string
+      TEST:
+        description: '仅输出配置文件，不编译固件。'
+        default: false
+        required: false
+        type: boolean
+
+env:
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+#CI权限
+permissions: write-all
+
+#CI任务
+jobs:
+  cleanup:
+    name: Clean old N60PRO Releases
+    needs: config
+    if: ${{ !inputs.TEST && needs.config.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Keep latest N60PRO release
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_REPO: ${{github.repository}}
+        run: |
+          set -euo pipefail
+
+          gh release list --repo "$GH_REPO" --limit 100 --json tagName,createdAt \
+            --jq '[.[] | select(.tagName | startswith("N60PRO-"))] | sort_by(.createdAt) | reverse | .[1:] | .[].tagName' |
+            while IFS= read -r TAG; do
+              [ -n "$TAG" ] || continue
+              gh release delete "$TAG" --repo "$GH_REPO" --yes --cleanup-tag
+            done
+
+  config:
+    name: N60PRO
+
+    #调用公用编译核心WRT-CORE.yml
+    uses: ./.github/workflows/WRT-CORE.yml
+    with:
+      #编译配置
+      WRT_CONFIG: N60PRO
+      #默认主题
+      WRT_THEME: bootstrap
+      #默认主机名
+      WRT_NAME: ImmortalWrt
+      #默认WIFI名称
+      WRT_SSID: CWRT
+      #默认WIFI密码
+      WRT_WORD: 12345678
+      #默认地址
+      WRT_IP: 192.168.6.1
+      #默认密码，仅作提示，修改无用
+      WRT_PW: 无
+      #源码链接
+      WRT_REPO: https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git
+      #源码分支
+      WRT_BRANCH: '25.12'
+      #源码名称
+      WRT_SOURCE: chasey-dev/immortalwrt-mt798x-rebase
+      #插件调整
+      WRT_PACKAGE: ${{inputs.PACKAGE}}
+      #仅输出配置文件
+      WRT_TEST: ${{inputs.TEST || false}}
