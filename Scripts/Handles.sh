@@ -39,3 +39,8 @@ FIX "mini-diskmanager" "$PACKAGE_PATH/luci-app-mini-diskmanager" sed -i "s/servi
 #修改natmapt菜单位置
 FIX "natmapt" "$PACKAGE_PATH/luci-app-natmapt" sed -i "s/network/services/g" \
 	"$PACKAGE_PATH/luci-app-natmapt/root/usr/share/luci/menu.d/luci-app-natmap.json"
+
+#修复mihomo变体之间的Kconfig循环依赖
+FIX "mihomo-alpha conflict" "$PACKAGE_PATH/OpenWrt-nikki/mihomo-alpha" sed -i \
+	"/CONFLICTS:=mihomo-meta/d" \
+	"$PACKAGE_PATH/OpenWrt-nikki/mihomo-alpha/Makefile"
