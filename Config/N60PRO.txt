@@ -7,12 +7,9 @@ CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_filogic=y
 
 # Device profile: MTK U-Boot layout only
-CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_netcore_n60-pro-mtkuboot=y
+CONFIG_TARGET_mediatek_filogic_DEVICE_netcore_n60-pro-mtkuboot=y
 
 # WireGuard VPN (device-specific selection)
 CONFIG_PACKAGE_kmod-wireguard=y
 CONFIG_PACKAGE_wireguard-tools=y
 CONFIG_PACKAGE_luci-proto-wireguard=y
-
-# Remove packages
-CONFIG_PACKAGE_luci-app-eqos-mtk=n
