@@ -16,12 +16,6 @@ on:
       WRT_NAME:
         required: true
         type: string
-      WRT_SSID:
-        required: true
-        type: string
-      WRT_WORD:
-        required: true
-        type: string
       WRT_IP:
         required: true
         type: string
@@ -110,7 +104,7 @@ jobs:
 
           {
             echo "WRT_INFO=${WRT_SOURCE%%/*}"
-            echo "WRT_MARK=Captain"
+            echo "WRT_MARK=CAPTAIN"
             echo "WRT_DATE=$(TZ=UTC-8 date +"%y.%m.%d-%H.%M.%S")"
             echo "WRT_CACHE_PREFIX=$WRT_CACHE_PREFIX"
             echo "WRT_CACHE_TARGET=$WRT_CACHE_TARGET"
