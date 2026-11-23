@@ -52,6 +52,7 @@ UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
 UPDATE_PACKAGE "sing-box" "VIKINGYFY/packages" "main" "pkg"
 UPDATE_PACKAGE "luci-app-wolultra" "VIKINGYFY/packages" "main" "pkg"
 UPDATE_PACKAGE "coffeelb" "coffeelb/MimoGate" "main" "" "luci-app-mimogate mihomo-meta"
+UPDATE_PACKAGE "cddns" "coffeelb/luci-app-cddns" "main"
 
 UPDATE_PACKAGE "diskman" "sbwml/luci-app-diskman" "main"
 UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5" "" "v2dat"
