@@ -33,7 +33,7 @@ jobs:
       fail-fast: false
       #max-parallel: 4
       matrix:
-        CONFIG: [N60PRO]
+        CONFIG: [N60PRO-24]
         REPO_INFO:
           - {SOURCE: "Yuzhii0718/immortalwrt-mt798x-6.6-padavanonly", BRANCH: "openwrt-24.10-6.6"}
 
