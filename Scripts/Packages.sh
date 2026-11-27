@@ -49,8 +49,7 @@ UPDATE_PACKAGE() {
 UPDATE_PACKAGE "diskmanager" "4IceG/luci-app-mini-diskmanager" "main"
 UPDATE_PACKAGE "easytier" "EasyTier/luci-app-easytier" "main"
 UPDATE_PACKAGE "qmodem" "FUjr/QModem" "main"
-UPDATE_PACKAGE "sing-box" "VIKINGYFY/packages" "main" "pkg"
-UPDATE_PACKAGE "luci-app-wolultra" "VIKINGYFY/packages" "main" "pkg"
+UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "axonhub gecoosac miniupnpd sing-box luci-app-homeproxy luci-app-timewol luci-app-upnp luci-app-wolplus luci-app-wolultra"
 UPDATE_PACKAGE "coffeelb" "coffeelb/MimoGate" "main" "" "luci-app-mimogate mihomo-meta"
 UPDATE_PACKAGE "cddns" "coffeelb/luci-app-cddns" "main"
 
